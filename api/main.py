@@ -5,12 +5,12 @@ import json
 import redis
 from flask import Flask, request, jsonify
 from flask_cors import CORS , cross_origin
-import pandas as pd
+'''import pandas as pd
 from linkextractor import columnas
 import numpy as np
 from scipy.spatial.distance import cityblock
 import math
-from datatable import dt, f, by, g, join, sort, update, ifelse
+from datatable import dt, f, by, g, join, sort, update, ifelse'''
 
 
 
@@ -31,21 +31,18 @@ def index():
     return "Usage: http://<hostname>[:<prt>]/api/<url>"
 
 #----------------------------------------------------------------
-total = {}
+'''total = {}
 valoresfinal = {}
 peliculasp = {}
 usuariosp = {}
 df = pd.DataFrame()
 midf = pd.DataFrame()
 movie_ids_user1 = []
-csv_path = '/shared_data/movie.csv'
+csv_path = '/shared_data/movie.csv'''
 
 @app.route('/api/csv', methods=['POST'])
 def recibir_csv():
-    global df
-    global midf
-    global usuariosp
-    global movie_ids_user1
+    
     if request.method == 'POST':
         data = request.get_json()  
         theuser = data.get('user')  
