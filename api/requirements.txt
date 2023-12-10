@@ -1,5 +1,6 @@
-flask
+fastapi
+uvicorn
 redis
 requests
-flask-cors
+
 

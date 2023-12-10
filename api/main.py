@@ -3,17 +3,28 @@
 import os
 import json
 import redis
-from flask import Flask, request, jsonify
-from flask_cors import CORS , cross_origin
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 
+app = FastAPI()
 
-app = Flask(__name__)
-CORS(app)
+# Configuración de CORS para permitir cualquier origen
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 redis_conn = redis.from_url(os.getenv("REDIS_URL", "redis://localhost:6379"))
 
-@app.route("/")
-def index():
-    return "Usage: http://<hostname>[:<prt>]/api/<url>"
+@app.get("/")
+async def index():
+    return {"message": "Hello Worlds"}
 
-app.run(host="0.0.0.0")
+
+

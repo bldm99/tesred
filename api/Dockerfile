@@ -10,4 +10,4 @@ RUN        pip install -r requirements.txt
 COPY       *.py /app/
 RUN        chmod a+x *.py
 
-CMD        ["./main.py"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

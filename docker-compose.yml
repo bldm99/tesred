@@ -2,16 +2,14 @@ version: '3'
 
 services:
   api:
-    image: linkextractor-api:step5-python
+    image: gmails:step
     build: ./api
     ports:
-      - "5000:5000"
+      - "5000:8000"
     environment:
       - REDIS_URL=redis://redis:6379
     depends_on:
       - redis
-    volumes:
-      - ./movie25.csv:/shared_data/movie25.csv
 
   redis:
     image: redis
