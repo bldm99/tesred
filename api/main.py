@@ -40,11 +40,7 @@ async def home():
         response.raise_for_status()  
         dataAPI = response.json()
 
-        df = pd.DataFrame(dataAPI)
-        newdf = df[['_id', 'sem1', 'sem2']]
-
-        diccionarioapi = {}
-        newdf.set_index('_id').apply(lambda row: diccionarioapi.update({row.name: row.dropna().to_dict()}), axis=1)
+        
         
 
          # Manhattan distance
@@ -173,14 +169,27 @@ async def home():
             finallst = topSuggestions(fullObjs, count, items)
             return finallst
         
-        cant_usuaruios = len(diccionarioapi) - 1
-        rfuncs = manhattanL
-        userselect = '6575cd66ab54236e314707f9'
-        mnha = knn_L(cant_usuaruios, rfuncs, userselect, diccionarioapi)
+        df = pd.DataFrame(dataAPI)
 
-        correosx = [identifier for value, identifier in zip(*mnha) if value == 0.0]
-        dic_correo = {}  
-        dic_correo["correosx"] = correosx
+        #Si la cantidad de columas es 7 tomaremso las distancias de 0.0
+        num_filas, num_columnas = df.shape
+        dic_correo = {} 
+
+        if num_columnas == 7:
+            #newdf = df[['_id', 'sem1', 'sem2']]
+            newdf = df.iloc[:, 4:]
+
+            diccionarioapi = {}
+            newdf.set_index('_id').apply(lambda row: diccionarioapi.update({row.name: row.dropna().to_dict()}), axis=1)
+            
+            cant_usuaruios = len(diccionarioapi) - 1
+            rfuncs = manhattanL
+            userselect = '6575cd66ab54236e314707f9'
+            mnha = knn_L(cant_usuaruios, rfuncs, userselect, diccionarioapi)
+
+            correosx = [identifier for value, identifier in zip(*mnha) if value == 0.0]
+            #dic_correo = {}  
+            dic_correo["correosx"] = correosx
     
         return dic_correo
 
