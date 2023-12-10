@@ -2,5 +2,7 @@ fastapi
 uvicorn
 redis
 requests
+pandas
+numpy
 
 
