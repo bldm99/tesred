@@ -174,12 +174,13 @@ async def home():
         #Si la cantidad de columas es 7 tomaremso las distancias de 0.0
         num_filas, num_columnas = df.shape
         dic_correo = {} 
+        newdf = df.iloc[:, 4:]
+        diccionarioapi = {}
 
         if num_columnas == 7:
             #newdf = df[['_id', 'sem1', 'sem2']]
-            newdf = df.iloc[:, 4:]
-
-            diccionarioapi = {}
+            #newdf = df.iloc[:, 4:]
+            #diccionarioapi = {}
             newdf.set_index('_id').apply(lambda row: diccionarioapi.update({row.name: row.dropna().to_dict()}), axis=1)
             
             cant_usuaruios = len(diccionarioapi) - 1
@@ -188,6 +189,22 @@ async def home():
             mnha = knn_L(cant_usuaruios, rfuncs, userselect, diccionarioapi)
 
             correosx = [identifier for value, identifier in zip(*mnha) if value == 0.0]
+            #dic_correo = {}  
+            dic_correo["correosx"] = correosx
+
+        if num_columnas > 7:
+            #newdf = df[['_id', 'sem1', 'sem2']]
+            #newdf = df.iloc[:, 4:]
+            #diccionarioapi = {}
+            
+            newdf.set_index('_id').apply(lambda row: diccionarioapi.update({row.name: row.dropna().to_dict()}), axis=1)
+            
+            cant_usuaruios = len(diccionarioapi) - 1
+            rfuncs = manhattanL
+            userselect = '6575cd66ab54236e314707f9'
+            mnha = knn_L(cant_usuaruios, rfuncs, userselect, diccionarioapi)
+
+            correosx = [identifier for value, identifier in zip(*mnha) if value == 1.0]
             #dic_correo = {}  
             dic_correo["correosx"] = correosx
     
