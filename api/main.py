@@ -189,9 +189,11 @@ async def home():
             valor_dos = [key for key, value in sumas.items() if value == 2] 
 
             for  r in valor_dos:
-                dataframe_actual = newdf[newdf['useId'] == r]
+                dataframe_actual = newdf[newdf['_id'] == r]
                 #obtenemos los nombre de las sem donde el valor sea 1
                 semanas = dataframe_actual.iloc[0, 1:][dataframe_actual.iloc[0, 1:] == 1].index.tolist()
+                semanas.append(r)
+
 
 
 
