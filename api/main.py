@@ -174,27 +174,27 @@ async def home():
         #Si la cantidad de columas es 7 tomaremso las distancias de 0.0
         num_filas, num_columnas = df.shape
         dic_correo = {} 
-        newdf = df.iloc[:, 4:]
+        #Traemos solo las columnas que nso interesan
+        newdf = df.iloc[:, 4:] 
         diccionarioapi = {}
 
-        if num_columnas == 7:
-            #newdf = df[['_id', 'sem1', 'sem2']]
-            #newdf = df.iloc[:, 4:]
-            #diccionarioapi = {}
-            newdf.set_index('_id').apply(lambda row: diccionarioapi.update({row.name: row.dropna().to_dict()}), axis=1)
-            
-            cant_usuaruios = len(diccionarioapi) - 1
-            rfuncs = manhattanL
-            userselect = '6575cd66ab54236e314707f9'
-            mnha = knn_L(cant_usuaruios, rfuncs, userselect, diccionarioapi)
+        if num_columnas >= 7:
 
-            correosx = [identifier for value, identifier in zip(*mnha) if value == 0.0]
-            #buscar correos de los ids obtenidos 
-            rae = df.query('_id in @correosx')
-            framecorreo = rae[['nombre', 'correo']]
-            dic_correo = framecorreo.to_dict(orient='records')
+            #Obtenemos todas las columas de sem que estan presentes
+            nombre_columnas = newdf.columns[1:]
+            # Calculamos la suma de las columnas para cada Id y convertir a un diccionario
+            sumas = newdf.set_index('_id')[nombre_columnas].sum(axis=1).to_dict()
 
-        if num_columnas > 7:
+            #Almacenamos en una lista todas las claves cuya suma dio valor de 2
+            valor_dos = [key for key, value in sumas.items() if value == 2] 
+
+            #buscamos los vaores del diccionario en el dataframe newdf
+            aprobados = newdf.query('_id in @valor_dos')
+
+            dic_correo  = aprobados.to_dict(orient='records')
+
+
+        '''if num_columnas > 7:
             #newdf = df[['_id', 'sem1', 'sem2']]
             #newdf = df.iloc[:, 4:]
             #diccionarioapi = {}
@@ -212,7 +212,7 @@ async def home():
             framecorreo = rae[['nombre', 'correo']]
             #dic_correo = {}  
             dic_correo = framecorreo.to_dict(orient='records')
-            #dic_correo["correosx"] = correosx 
+            #dic_correo["correosx"] = correosx '''
 
     
         return dic_correo
