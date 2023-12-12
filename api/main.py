@@ -188,10 +188,18 @@ async def home():
             #Almacenamos en una lista todas las claves cuya suma dio valor de 2
             valor_dos = [key for key, value in sumas.items() if value == 2] 
 
-            #buscamos los vaores del diccionario en el dataframe newdf
-            aprobados = newdf.query('_id in @valor_dos')
+            for  r in valor_dos:
+                dataframe_actual = newdf[newdf['useId'] == r]
+                #obtenemos los nombre de las sem donde el valor sea 1
+                semanas = dataframe_actual.iloc[0, 1:][dataframe_actual.iloc[0, 1:] == 1].index.tolist()
 
-            dic_correo  = aprobados.to_dict(orient='records')
+
+
+            #buscamos los vaores del diccionario en el dataframe newdf
+            #aprobados = newdf.query('_id in @valor_dos')
+            #dic_correo  = aprobados.to_dict(orient='records')
+
+            #Crear un dataframe para cada usaurio que tienen la suma de 2
 
 
         '''if num_columnas > 7:
@@ -215,7 +223,8 @@ async def home():
             #dic_correo["correosx"] = correosx '''
 
     
-        return dic_correo
+        #return dic_correo
+        return semanas
 
     except requests.exceptions.RequestException as e:
         raise HTTPException(status_code=500, detail=f"Error al llamar a la API externa: {str(e)}")
