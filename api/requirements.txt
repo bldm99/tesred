@@ -4,5 +4,6 @@ redis
 requests
 pandas
 numpy
+datatable
 
 

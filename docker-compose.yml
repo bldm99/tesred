@@ -10,6 +10,8 @@ services:
       - REDIS_URL=redis://redis:6379
     depends_on:
       - redis
+    volumes:
+      - ./finaldata.csv:/shared_data/finaldata.csv
 
   redis:
     image: redis
