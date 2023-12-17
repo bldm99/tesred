@@ -41,7 +41,7 @@ async def index():
 
 @app.get("/alertas")
 async def home():
-    url = "https://girapi.bladimirchipana.repl.co/alumnos?_idUsuario=6531d08612ec096c58717b97&_idRiesgo=65754cdbd6a61db3295d8f3b"
+    url = "https://girapi.bladimirchipana.repl.co/alumnos?_idUsuario=6531d08612ec096c58717b97&_idRiesgo=657f1edfb8453f2c73ddf88c"
     #urltecsup = "http://localhost:3000/estudiantes"
 
     try:
