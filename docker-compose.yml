@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 
 services:
   api:
@@ -6,8 +6,12 @@ services:
     build: ./api
     ports:
       - "5000:8000"
+    expose:
+      - "5000"
     environment:
       - REDIS_URL=redis://redis:6379
+    networks:
+      - integration
     depends_on:
       - redis
     volumes:
@@ -21,7 +25,13 @@ services:
     depends_on:
       - api
     environment:
-      - REACT_APP_API_URL=http://api:8000  # Cambiado a 8000 para reflejar el puerto del contenedor de la API
+      - REACT_APP_API_URL=http://localhost:5000
+    networks:
+      - integration
 
   redis:
     image: redis
+
+networks:
+  integration:
+    driver: bridge
