@@ -87,6 +87,7 @@ const Lista = () => {
                     await postLista(alumnoId, nsemana, valor);
                 }
             }
+            await helloword();
             toast.success('¡Asistencia guardada correctamente!');
 
         } catch (error) {
