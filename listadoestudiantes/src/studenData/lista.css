@@ -1,0 +1,64 @@
+
+.alumnos {
+    width: 100%;
+    
+    
+}
+
+.semanas {
+    background: rgb(4, 0, 54);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 5px;
+    width: 100%;
+    padding: 5px 4px;
+    box-sizing: border-box;
+    
+}
+
+.semanas button {
+    
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.semanas button.active {
+    background-color: lightblue;
+}
+
+.regis {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+}
+.regis button{
+    background-color: rgb(249, 122, 87);
+    font-weight: bolder;
+}
+
+
+.alumnos .tablecontaine{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.alumnos .mitable{
+    width: 70%;
+}
+
+.mitable th, .mitable td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd; /* Borde gris claro */
+}
+
+.mitable th {
+    background-color: lightblue; /* Fondo celeste para el encabezado */
+}

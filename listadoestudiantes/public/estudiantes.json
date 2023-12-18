@@ -1,0 +1,136 @@
+{
+  "estudiantes": [
+    {
+      "id": 1,
+      "nombre": "Estudiante1",
+      "curso": "Curso1",
+      "correo": "estudiante1@example.com",
+      "numeroWhatsapp": "+123456789"
+    },
+    {
+      "id": 2,
+      "nombre": "Estudiante2",
+      "curso": "Curso2",
+      "correo": "estudiante2@example.com",
+      "numeroWhatsapp": "+987654321"
+    },
+    {
+      "id": 3,
+      "nombre": "Estudiante1",
+      "curso": "Curso1",
+      "correo": "estudiante1@example.com",
+      "numeroWhatsapp": "+123456789"
+    },
+    {
+      "id": 4,
+      "nombre": "Estudiante1",
+      "curso": "Curso1",
+      "correo": "estudiante1@example.com",
+      "numeroWhatsapp": "+123456789"
+    },
+    {
+      "id": 5,
+      "nombre": "Estudiante1",
+      "curso": "Curso1",
+      "correo": "estudiante1@example.com",
+      "numeroWhatsapp": "+123456789"
+    },
+    {
+      "id": 6,
+      "nombre": "Estudiante1",
+      "curso": "Curso1",
+      "correo": "estudiante1@example.com",
+      "numeroWhatsapp": "+123456789"
+    },
+
+    
+  ],
+  "semanas": [
+    {
+      "semana": 1,
+      "asistencias": {
+        "Lunes": true,
+        "Martes": false,
+        "Miércoles": true,
+        "Jueves": false,
+        "Viernes": true,
+        "Sábado": false,
+        "Domingo": true
+      }
+    },
+    {
+      "semana": 2,
+      "asistencias": {
+        "Lunes": false,
+        "Martes": true,
+        "Miércoles": false,
+        "Jueves": true,
+        "Viernes": false,
+        "Sábado": true,
+        "Domingo": false
+      }
+    },
+{
+      "semana": 3,
+      "asistencias": {
+        "Lunes": true,
+        "Martes": false,
+        "Miércoles": true,
+        "Jueves": false,
+        "Viernes": true,
+        "Sábado": false,
+        "Domingo": true
+      }
+    },
+{
+      "semana": 4,
+      "asistencias": {
+        "Lunes": true,
+        "Martes": false,
+        "Miércoles": true,
+        "Jueves": false,
+        "Viernes": true,
+        "Sábado": false,
+        "Domingo": true
+      }
+    },
+{
+      "semana": 5,
+      "asistencias": {
+        "Lunes": true,
+        "Martes": false,
+        "Miércoles": true,
+        "Jueves": false,
+        "Viernes": true,
+        "Sábado": false,
+        "Domingo": true
+      }
+    },
+{
+      "semana": 6,
+      "asistencias": {
+        "Lunes": true,
+        "Martes": false,
+        "Miércoles": true,
+        "Jueves": false,
+        "Viernes": true,
+        "Sábado": false,
+        "Domingo": true
+      }
+    },
+{
+      "semana": 7,
+      "asistencias": {
+        "Lunes": true,
+        "Martes": false,
+        "Miércoles": true,
+        "Jueves": false,
+        "Viernes": true,
+        "Sábado": false,
+        "Domingo": true
+      }
+    },
+
+    // ... Agrega información de más semanas según sea necesario
+  ]
+}
