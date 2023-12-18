@@ -12,7 +12,7 @@ const apiURL = process.env.REACT_APP_API_URL
 
 export const helloword = async () => {
     try {
-        const response = await axios.get(apiURL);
+        const response = await axios.get(`${apiURL}/alertas`);
         console.log(response.data)
         return response.data
     } catch (error) {
