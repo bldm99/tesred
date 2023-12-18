@@ -285,10 +285,16 @@ async def home():
                 conteo_1_por_columna = recort.sum()
                 conteo_dict = conteo_1_por_columna.to_dict()
 
+                # Obtener la clave y el valor máximo
+                max_clave_valor = max(conteo_dict.items(), key=lambda x: x[1])
+
+                # Crear una lista con la clave y el valor máximo
+                lista_maximo = list(max_clave_valor)
+
                 #Maximos valores
-                max_value = max(conteo_dict.values())
-                columnas_con_max_valor = [col for col, valor in conteo_dict.items() if valor == max_value]
-                resultado_final = {col: max_value for col in columnas_con_max_valor}
+                #max_value = max(conteo_dict.values())
+                #columnas_con_max_valor = [col for col, valor in conteo_dict.items() if valor == max_value]
+                #resultado_final = {col: max_value for col in columnas_con_max_valor}
 
                 #obtenemos datos del alumno
                 datalumno = df.loc[df['_id'] == r]
@@ -296,7 +302,8 @@ async def home():
                 # Obtener una lista con los valores de 'nombre' y 'correo' para cada fila filtrada
                 listalumno = datalumno[['nombre', 'correo','_id']].values.flatten().tolist()
 
-                nuevo_diccionario = {'alumno': listalumno[0],'correo': listalumno[1], **resultado_final}
+                #nuevo_diccionario = {'alumno': listalumno[0],'correo': listalumno[1], **resultado_final}
+                nuevo_diccionario = {'alumno': listalumno[0],'correo': listalumno[1], 'semana': lista_maximo[0], 'incidentes': lista_maximo[1]}
                 li.append(nuevo_diccionario)
 
                 #Alamcenando datos para analisis de l alumno
@@ -338,8 +345,8 @@ async def home():
     
         #return dic_correo
         #return semanas
-        #return li
-        return resultado_final
+        return li
+        
 
     except requests.exceptions.RequestException as e:
         raise HTTPException(status_code=500, detail=f"Error al llamar a la API externa: {str(e)}")
