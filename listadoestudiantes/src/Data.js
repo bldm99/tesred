@@ -4,7 +4,7 @@ import axios from 'axios';
 const URLdesrrollo = "https://girapi.bladimirchipana.repl.co/listalumno"
 const alumnos = 'https://girapi.bladimirchipana.repl.co/alumnos?_idUsuario=6531d08612ec096c58717b97&_idRiesgo=657f1edfb8453f2c73ddf88c'
 
-const apiURL = "http://api:5000"; 
+const apiURL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 //const apiURL = "http://ip172-18-0-15-clvp0fdnp9tg008ijs50-5000.direct.labs.play-with-docker.com/"; 
 
 

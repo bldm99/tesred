@@ -13,6 +13,8 @@ RUN npm install
 # Construye la aplicación React para producción
 RUN npm run build
 
+ENV REACT_APP_API_URL=http://localhost:5000
+
 # Expone el puerto 3000 en el contenedor
 EXPOSE 3000
 
