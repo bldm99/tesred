@@ -18,10 +18,10 @@ services:
       context: ./listadoestudiantes
     ports:
       - "3000:3000"
-    environment:
-      - REACT_APP_API_URL=http://api:5000  
     depends_on:
       - api
+    environment:
+      - REACT_APP_API_URL=http://api:8000  # Cambiado a 8000 para reflejar el puerto del contenedor de la API
 
   redis:
     image: redis
