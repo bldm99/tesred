@@ -338,7 +338,8 @@ async def home():
     
         #return dic_correo
         #return semanas
-        return li
+        #return li
+        return resultado_final
 
     except requests.exceptions.RequestException as e:
         raise HTTPException(status_code=500, detail=f"Error al llamar a la API externa: {str(e)}")
