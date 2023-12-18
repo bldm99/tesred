@@ -9,6 +9,8 @@ import './lista.css'
 const Lista = () => {
     const getAlumnos = Data.getAlumnos;
     const postLista = Data.postLista;
+    const helloword = Data.helloword
+
 
     const [alumnos, setAlumnos] = useState([]);
     const [diccionario, setDiccionario] = useState({});
@@ -92,11 +94,16 @@ const Lista = () => {
         }
     };
 
+    const hello = async () => {
+        await helloword();
+    };
+
 
 
     return (
         <div className='alumnos'>
             <ToastContainer />
+            <button onClick={hello}  >helloword</button>
             <h2>Lista de Alumnos Tecsup 2023 curso AWS</h2>
             <div className='semanas'>
                 <button onClick={() => { setNsemana('1') }}  >Semana 1</button>
